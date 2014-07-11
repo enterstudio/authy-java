@@ -14,8 +14,10 @@ This will generate a jar file in `dist` folder.
 
 Import API:
 
-	import com.authy.*;
-	import com.authy.api.*;
+```java
+import com.authy.*;
+import com.authy.api.*;
+```
 	
 Create an API instance:
 
@@ -60,7 +62,7 @@ It returns an Error object explaining what went wrong with the request.
 
 __NOTE: Token verification is only enforced if the user has completed registration. To change this behaviour see Forcing Verification section below.__  
    
-   >*Registration is completed once the user installs and registers the Authy mobile app or logins once successfully using SMS.*
+   >*Registration is completed once the user installs and registers the Authy mobile app or successfully logs in using SMS.*
 
 `tokens.verify()` takes the authy_id that you are verifying and the token that you want to verify. You should have the authy_id in your database
 
@@ -91,14 +93,18 @@ If you wish to verify tokens even if the user has not yet complete registration,
 
 Once again you can use `isOk()` to verify whether the user was deleted or not.
 
-	if(response.isOk())
-		// User was deleted
-	else
-		// Some error ocurred
+```java
+if(response.isOk()){
+	// User was deleted
+}
+else {
+	// Some error ocurred
+}
+```		
 
 In case `response.isOk()` returns `false`, you can get an Error object using `response.getError()`
 
-## Requesting a SMS token
+## Requesting an SMS token
 
 `users.requestSms()` takes the authy_id that you want to send a SMS token. This requires Authy SMS plugin to be enabled.
 
@@ -106,8 +112,9 @@ In case `response.isOk()` returns `false`, you can get an Error object using `re
 	
 As always, you can use `isOk()` to verify if the token was sent.
 
-    if(sms.isOk())
+	if(sms.isOk()){
 		// sms was sent
+	}
 
 In case `sms.isOk()` returns `false`, you can get an Error object using `sms.getError()`
 
